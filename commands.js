@@ -38,16 +38,15 @@ const commandLibrary = {
     const outputData = snippet.join('\n');
     done(outputData);
   },
-  reverseString(userInput) {
-    // Reverse the order of characters in each word while maintaining original word order
-    const reversedWords = userInput.map(word => {
-      const reversedWord = word
-        .split('')
-        .reverse()
-        .join('');
-      return reversedWord;
-    });
-    done(reversedWords.join(' '));
+  reverse(userInput) {
+    // split string into substring array
+    forwardString = userInput.split('');
+    // console.log(forwardString)
+    reversedArray = forwardString.reverse();
+    // console.log(reversedArray)
+    reverseString = reversedArray.join('');
+    // console.log(reverseString)
+    done(reverseString);
   },
   errorHandler() {
     done('That is not a valid command');
@@ -72,7 +71,7 @@ function evaluateCmd(trimmedUserInput) {
       commandLibrary.tail(userInputArray.slice(1));
       break;
     case 'reverse':
-      commandLibrary.reverseString(userInputArray.slice(1));
+      commandLibrary.reverse(userInputArray.slice(1).join(''));
       break;
     default:
       commandLibrary.errorHandler();
